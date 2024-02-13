@@ -15,7 +15,7 @@ Hoe gaat het werken?
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument("-t", "--template", dest="template", help="Template file")
+    parser.add_argument("-t", "--template", dest="template", help="Template file", required=True)
     parser.add_argument("-o", "--output", dest="output", help="Output file")
     parser.add_argument("-l", "--list", dest="list", help="List replacement tokens", action="store_true", default=False)
 
@@ -27,6 +27,12 @@ if __name__ == '__main__':
         "Bedrijfsnaam": "Bedrijfsnaam zonder haakjes",
         "Voornaam": "Heel",
         "Achternaam": "Erg",
+        "antwoord_vraag_3_cliëntprofiel": "Dit is het antwoord vraag 3 cliëntprofiel",
+        "antwoord_vraag_6_cliëntprofiel": "Dit is het antwoord vraag 6 cliëntprofiel",
+        "antwoord_vraag_19_cliëntprofiel": "Dit is het antwoord vraag 19 cliëntprofiel",
+        "antwoord_vraag_13_cliëntprofiel": "Dit is het antwoord vraag 13 cliëntprofiel",
+        "antwoord_vraag_17_cliëntprofiel": "Dit is het antwoord vraag 17 cliëntprofiel",
+        "antwoord_vraag_16_cliëntprofiel": "Dit is het antwoord vraag 16 cliëntprofiel",
     }
 
     if args.output:
@@ -34,3 +40,5 @@ if __name__ == '__main__':
         print("Migration complete. {} is ready.".format(args.output))
     elif args.list:
         print(engine.get_replacement_tokens())
+    else:
+        raise Exception("No output path or method specified")
