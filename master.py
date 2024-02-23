@@ -8,7 +8,7 @@ from engines.pdf import SearchReplacePdf
 """
 Hoe gaat het werken?
 
-1. Aangeleverd wordt een word document met tokens in de stijl {{key-naam}}
+1. Aangeleverd wordt een word document met tokens in de stijl {{key_naam}}
 2. op onderstaande manier wordt een bestand (dus) geconverteerd
 
 """
@@ -39,6 +39,7 @@ if __name__ == '__main__':
         engine.search_replace(context, args.output)
         print("Migration complete. {} is ready.".format(args.output))
     elif args.list:
-        print(engine.get_replacement_tokens())
+        for token in engine.get_replacement_tokens():
+            print(token)
     else:
         raise Exception("No output path or method specified")
